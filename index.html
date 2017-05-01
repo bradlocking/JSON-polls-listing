@@ -1,0 +1,272 @@
+<?php include_once('template-functions.php'); ?>
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        
+        <title>Polls Listing</title>
+        
+		<!-- <link rel="apple-touch-icon" href="img/apple-icon-touch.png">
+		<link rel="icon" href="favicon.png"> -->
+
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,600,700" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/src/css/main.css">
+	    <!-- <link rel="stylesheet" href="<?php echo $themePath; ?>css/font-awesome.min.css"> -->
+	    
+	    <script src="/src/js/jquery.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.0/fingerprint2.min.js"></script>
+	    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+
+	</head>
+    
+	<body class="subpage polls-page">
+    	
+        <div id="wrap">
+
+            <section class="main-body">
+
+                <article class="main-content">
+					
+					<section class="heading">
+						<div class="container">
+							<h1>Polls listing and archive template</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo dolor aliquid reiciendis saepe, velit quos fugiat eveniet mollitia ullam voluptate.</p>
+						</div>
+					</section>
+
+                    <div class="block polls-widget">
+                        <div class="container">
+                            <h4>What are your views on the new CA2 exam?</h4>
+
+                            <form action="" method="post" class="polls-widget__poll closed" data-poll-id="1">
+                                <p class="poll-answer" data-answer-id="0">
+                                     <input type="radio" name="poll-1" id="poll-1-answer-1" value="Improved compared to before">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-1-answer-1">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">Improved compared to before</span>
+                                            <span class="poll-answer__percentage"><span>45</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                                <p class="poll-answer" data-answer-id="1">
+                                    <input type="radio" name="poll-1" id="poll-1-answer-2" value="I had one before">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-1-answer-2">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">I had one before</span>
+                                            <span class="poll-answer__percentage"><span>30</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                                <p class="poll-answer" data-answer-id="2">
+                                    <input type="radio" name="poll-1" id="poll-1-answer-3" value="Not yet, but want to have">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-1-answer-3">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">Not yet, but want to have</span>
+                                            <span class="poll-answer__percentage"><span>10</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                                <p class="poll-answer" data-answer-id="3">
+                                    <input type="radio" name="poll-1" id="poll-1-answer-4" value="No, and do not need">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-1-answer-4">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">No, and do not need</span>
+                                            <span class="poll-answer__percentage"><span>15</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="block polls-widget">
+                        <div class="container">
+                            <h4>Are you interested in working overseas as an actuary?</h4>
+
+                            <form action="" method="post" class="polls-widget__poll" data-poll-id="2">
+                                <p class="poll-answer" data-answer-id="0">
+                                    <input type="radio" name="poll-1" id="poll-2-answer-1" value="Improved compared to before">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-2-answer-1">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">Definitely</span>
+                                            <span class="poll-answer__percentage"><span>45</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                                <p class="poll-answer" data-answer-id="1">
+                                    <input type="radio" name="poll-1" id="poll-2-answer-2" value="I had one before">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-2-answer-2">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">Depends on the job, location etc</span>
+                                            <span class="poll-answer__percentage"><span>30</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                                <p class="poll-answer" data-answer-id="2">
+                                    <input type="radio" name="poll-1" id="poll-2-answer-3" value="Not yet, but want to have">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-2-answer-3">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">Salary is a core factor for my decision</span>
+                                            <span class="poll-answer__percentage"><span>10</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                                <p class="poll-answer" data-answer-id="3">
+                                    <input type="radio" name="poll-1" id="poll-2-answer-4" value="No, and do not need">
+                                    <span class="poll-answer__label">
+                                        <label for="poll-2-answer-4">
+                                            <span class="poll-answer__chart"></span>
+                                            <span class="poll-answer__text">Not at all</span>
+                                            <span class="poll-answer__percentage"><span>15</span>%</span>
+                                        </label>
+                                    </span>
+                                </p>
+                            </form>
+
+                            <!-- <div class="poll-results">Final results - 13th January 2017</div> -->
+
+                        </div>
+                    </div>
+
+                    <section class="block polls-archive">
+                        <h3>Previous poll questions</h3>
+
+                        <div class="container container--medium">
+                            
+                                <div class="polls-archive__listing">
+                                    
+                                    <a class="poll-archive-item" href="http://sias.dev:1045/templates/polls-single.php" data-poll-id="1" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Are you interested in working overseas as an actuary?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:100%"><span>45%</span></li>
+                                            <li data-answer-id="1" style="max-height:30%"><span>30%</span></li>
+                                            <li data-answer-id="2" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="3" style="max-height:15%"><span>15%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="4" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Which charity should the proceeds of the raffle at the 2016 Ball go to?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+                                    <a class="poll-archive-item" href="" data-poll-id="5" data-close-date="10 Jan 2017">
+                                        <div class="poll-date">14 - 20 Dec 2016</div>
+                                        <h5>Where would you prefer the drinks after the SIAS talks to be held?</h5>
+                                        <ul class="poll-bars">
+                                            <li data-answer-id="0" style="max-height:10%"><span>10%</span></li>
+                                            <li data-answer-id="1" style="max-height:20%"><span>20%</span></li>
+                                            <li data-answer-id="2" style="max-height:82%"><span>62%</span></li>
+                                            <li data-answer-id="3" style="max-height:8%"><span>8%</span></li>
+                                        </ul>
+                                    </a>
+
+                                </div>
+
+                                <a href="" class="button--large button--ajax">
+                                    <span data-end-text="No more Polls">
+                                        Load More
+                                        <!-- <img src="<?php echo $themePath; ?>/img/three-dots.svg" width="60" aria-hidden="true"> -->
+                                    </span>
+                                </a>
+
+                        </div>
+                        
+                    </section>
+
+                </article>
+            </section>
+          
+        	<footer>
+                
+            </footer> 
+        </div>
+        
+
+        <div class="loader hide-loader lower-loader" disabled>
+            <svg class="spinner-container" width="65px" height="65px" viewBox="0 0 52 52">
+                <circle class="path" cx="26px" cy="26px" r="20px" fill="none" stroke-width="2px"></circle>
+            </svg>
+        </div>
+            
+    	<!-- <script src="/src/js/plugins.js"></script> -->
+        <script src="/src/js/main.js"></script>
+        <script src="/src/js/polls.js"></script>
+
+    </body>
+</html>

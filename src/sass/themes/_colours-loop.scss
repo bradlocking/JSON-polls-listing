@@ -1,0 +1,17 @@
+// Color themes
+$colours: (
+    default: $primaryColor,
+    theOffice:#272c4a,
+    django:#33c0d2,
+    ferrisBueller:#ff4f81,
+    forrestGump:#b81053,
+    backToFuture:#d35322,
+    socialNetwork:#3b5998,
+); 
+
+
+// Looping $colours object and running the 'theme'mixin for each key value 
+// pair in the object.
+@each $key, $value in $colours {
+  @include theme($key, $value);
+} 

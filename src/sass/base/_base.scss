@@ -1,0 +1,113 @@
+.container {
+	max-width: 800px;
+	padding-left: 25px;
+	padding-right: 25px;
+	margin: 0 auto;
+    @include clearfix;
+
+    &--medium {
+        max-width: 1199px;
+    }
+
+    &--small {
+        max-width: 815px;
+    }
+}
+
+.block {
+    margin-top: 100px;
+}
+
+
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#wrap {
+	margin-top: 100px; 
+}
+
+body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    min-width: 320px;
+	font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.5;
+	color: $textColor;
+	background: $backgroundColor;
+
+	@include breakpoint('xs') {
+		font-size: 16px;
+	}
+}
+
+#wrap {
+    right: 0;
+    left: 0;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    + ul, + ol, + dl, + p, + blockquote, + table {
+        margin: 20px 0 0;
+
+		@include breakpoint('sm-xs') {
+			margin: 25px 0 0;
+		}
+    }
+    + h1,
+    + h2,
+    + h3,
+    + h4,
+    + h5,
+    + h6 {
+        margin: 50px 0 0;
+
+        @include breakpoint('sm-xs') {
+            margin: 25px 0 0;
+        }
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    line-height: 1.2;
+    font-weight: 700;
+}
+h1 {
+    font-size: 40px;
+    color: $textColor;
+
+    @include breakpoint('xs') {
+        font-size: 28px;
+    }
+}
+h2 {
+	font-size: 30px;
+    letter-spacing: 2px;
+
+    @include breakpoint('xs') {
+        font-size: 28px;
+    }
+}
+h3 {
+    font-size: 40px;
+    
+    @include breakpoint('xs') {
+        font-size: 35px;
+    }
+}

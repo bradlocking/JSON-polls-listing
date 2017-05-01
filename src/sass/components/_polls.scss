@@ -1,0 +1,236 @@
+.polls-page {
+	.main-content {
+		margin-bottom: 0 !important;
+	}
+}
+
+.polls-widget {
+	h5 {
+		font-size: 18px;
+		color: #9a9a9a;
+		font-weight: 400;
+		margin-bottom: 15px;
+
+		@include breakpoint('xs') {
+			font-size: 16px;
+			margin-bottom: 6px;
+		}
+	}
+
+	h4 {
+		margin-top: 0;
+		font-size: 24px;
+		font-weight: 600;
+		color: $primaryColor;
+
+		@include breakpoint('xs') {
+			font-size: 24px;
+		}
+	}
+
+	&__poll {
+		margin-top: 40px;
+
+		@include breakpoint('xs') {
+			margin-top: 30px;
+		}
+	}
+}
+
+.poll-results {
+	font-size: 20px;
+	font-weight: 600;
+	color: #9a9a9a;
+	margin-top: 20px;
+
+	@include breakpoint('xs') {
+		font-size: 14px;
+		margin-top: 15px;
+	}
+}
+
+.poll-answer {
+	&__label {
+		label {
+			position: relative;
+			cursor: pointer;
+			font-size: 20px;
+			color: $primaryColor;
+			font-weight: 600;
+			padding: 0;
+			display: block;
+			background: rgba($primaryColor, 0.25);
+			@include anim(all 0.3s ease);
+			@include textSelectOff();
+
+			@include breakpoint('xs') {
+				font-size: 16px;
+			}
+
+			.polls-widget--answered & {
+				cursor: default;
+			}
+
+			&:before, &:after {
+				position: absolute;
+				content: '';
+				width: 20px;
+				height: 20px;
+				border: 2px solid rgba($primaryColor, 0.25);
+				@include anim(all 0.4s ease);
+				left: -50px;
+				top: 25px;
+				border-radius: 20px;
+				cursor: pointer;
+
+				@include breakpoint('md-xs') {
+					display: none;
+				}
+
+				.polls-widget--closed & {
+					display: none;
+				}
+			}
+
+			&:before {
+				.polls-widget--answered & {
+					border-color: #b3b3b3;
+				}
+
+				.poll-answer--answered & {
+					border-color: $primaryColor;
+				}
+			}
+
+			&:after {
+				@include transform(scale(0));
+				background: $primaryColor;
+				border: none;
+				opacity: 0;
+			}
+
+			.polls-widget--answered & {
+				background: rgba(#b3b3b3, 0.1);
+				color: $textColor;
+
+				&:before, &:after {
+					cursor: not-allowed;
+				}
+			}
+
+			.poll-answer--answered & {
+				background: rgba($primaryColor, 0.10) !important;
+				color: $primaryColor;
+
+				&:after {
+					@include transform(scale(1) !important);
+					opacity: 1 !important;
+				}
+			}
+		}
+	}
+
+	input {
+		&:checked {
+			+ span > label {
+				color: #366d32;
+
+				&:after {
+					@include transform(scale(1));
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__text { 
+		padding: 22px 85px 22px 50px;
+		display: block;
+		position: relative;
+		line-height: 1.2;
+
+		@include breakpoint('xs') {
+			padding: 20px 70px 20px 35px;
+		}
+
+		@include breakpoint($max: 550px) {
+			padding: 15px 70px 15px 30px;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 10px;
+			background: rgba($primaryColor, 0.25);
+			@include anim(all 0.3s ease);
+
+			@include breakpoint('xs') {
+				width: 7px;
+			}
+
+			.polls-widget--answered & {
+				background: rgba(#b3b3b3, 0.25);
+			}
+
+			.poll-answer--answered & {
+				background: $primaryColor;
+			}
+		}
+	}
+
+	&__chart {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 10px;
+		@include anim(all 0.4s cubic-bezier(0.155, 1.105, 0.295, 1.12));
+		opacity: 0;
+
+		@include breakpoint('xs') {
+			width: 7px;
+		}
+
+		.polls-widget--answered & {
+			background: rgba(#b3b3b3, 0.25);
+			opacity: 1;
+		}
+
+		.poll-answer--answered &, & {
+			background: rgba($primaryColor, 0.25); 
+		}
+
+		.prevent-poll-animations & {
+			width: 10px !important;
+		}
+	}
+ 
+	&__percentage {
+		position: absolute;
+		top: 50%;
+		right: 20px;
+		color: #252525;
+		opacity: 0;
+		@include translate(-30%, -50%);
+		@include anim(all 450ms cubic-bezier(1, 0, 0.01, 1));
+
+		@include breakpoint($max: 550px) {
+			right: 10px;
+			font-size: 14px;
+		}
+
+		.polls-widget--answered & {
+			@include transition-delay (0.2s);
+			@include translate(0, -50%);
+			opacity: 1;
+		}
+	}
+
+	+ .poll-answer {
+		margin-top: 10px;
+	}
+}

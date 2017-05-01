@@ -1,0 +1,262 @@
+.ui-overlay {
+    position: fixed;
+    z-index: 190;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(black, 0.75);
+    text-align: center;
+    opacity: 0;
+    -webkit-overflow-scrolling: touch;
+    @include anim(all .2s ease-in-out);
+    &.anim-in {
+        opacity: 1;
+    }
+    &.anim-out {
+        opacity: 0;
+    }
+
+    &[data-poll-id], &[data-fullscreen] {
+        background: white;
+        overflow: scroll;
+        overflow-x:hidden;
+
+        .ui-buttons {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            height: 90px;
+
+            @include breakpoint('xs') {
+                height: 66px;
+            }
+
+            .text-button[data-action="close-dialog"] {
+                font-size: 30px;
+                padding: 17px 32px;
+                float: right;
+
+                @include breakpoint('xs') {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .ui-dialog {
+            display: table;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0; 
+            transform: none;
+            max-width: none;
+            right: 0;
+            bottom: 0;
+
+            .polls-widget, .member-search {
+                display: table-cell;
+                vertical-align: middle; 
+                float: none;
+                padding: 130px 0;
+
+                @include breakpoint('xs') {
+                    padding: 80px 0 60px;
+                }
+            }
+
+            .button--large {
+                margin-top: 40px;
+
+                span {
+                    position: relative;
+                    font-size: 16px;
+                    padding: 14px 27px;
+
+                    @include breakpoint('xs') {
+                        font-size: 12px;
+                        padding: 10px 20px;
+                    }
+
+                    &:before, &:after {
+                        @include breakpoint('xs') {
+                            font-size: 9px !important; 
+                        }
+                    }
+                }
+
+                &.poll-newer {
+                }
+
+                &.poll-older {
+                    float: right;
+
+                    &:after {
+                        left: -8px;
+
+                        @include breakpoint('xs') {
+                            left: -5px;
+                        }
+                    }
+
+                    span {
+                    }
+
+                    &:hover, &:focus {
+                        &:after {
+                            transform: translate(8px, -8px);
+
+                            @include breakpoint('xs') {
+                                transform: translate(5px, -5px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    &[data-video] {
+        overflow-y: scroll;
+
+        .ui-dialog {
+            background: none;
+            box-shadow: none;
+            padding: 0;
+            max-width: 900px;
+            max-height: none;
+            width: 100%;
+            padding: 50px 30px 0 30px;
+            display: table;
+            margin-top: 60px;
+            top: 0;
+
+            @include breakpoint($min: 768px) {
+                @include translate(-50%, 0);
+            }
+
+            @include breakpoint('xs') {
+                margin-top: 30px;
+            }
+
+            .ui-buttons {
+                position: absolute;
+                top: 0;
+                right: 30px;
+                background: white;
+            }
+
+            .video-wrapper {
+                width: 100%;
+                height: 0;
+                padding-top: 56.25%;
+                position: relative;
+                display: table-cell;
+                margin-bottom: 50px;
+
+                @include breakpoint('xs') {
+                    margin-bottom: 30px;
+                }
+
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.ui-dialog {
+    padding: 25px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: left;
+    display: inline-block;
+    background: white;
+    z-index: 200;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 35px 120px rgba(0, 0, 0, 0.15);
+    max-width: 320px;
+    max-height: 100vh;
+    @include anim(all .2s ease-in-out);
+    @include transform(translate(-50%, -50%));
+    opacity: 0;
+    @include transform-origin(center top);
+    &.anim-in {
+        opacity: 1;
+        @include translate(-50%, -50%);
+    }
+    &.anim-out {
+        opacity: 1;
+        @include translate(-50%, -50%);
+    }
+    > * {
+        float: left;
+        width: 100%;
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: $primaryColor;
+    }
+    .form-group {
+        .prefix {
+            position: absolute;
+            left: 0;
+            top: 7px;
+            font-size: 23px;
+            opacity: 0.2;
+            z-index: 1;
+            + label {
+                margin-left: 25px;
+            }
+            + label + input {
+                padding-left: 25px;
+            }
+        }
+        .error-message {
+            position: absolute;
+            color: tomato;
+            font-size: 28px;
+            right: 15px;
+            top: 0px;
+            line-height: 28px;
+            font-weight: 800;
+        }
+    }
+    .ui-buttons {
+        float: right;
+        width: auto;
+        // margin: 7px -12px -8px 0;
+        .text-button {
+            float: left;
+            padding: 8px 12px;
+            @include anim(all .2s);
+
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+    }
+    @include breakpoint('xs') {
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        @include transform(translate(0, 0));
+        &.anim-in, &.anim-out {
+            @include transform(none);
+        }
+    }
+}

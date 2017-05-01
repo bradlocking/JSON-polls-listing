@@ -1,0 +1,19 @@
+// Helper theme mixin
+// @param $name: name of the theme (Data attribute value)
+// @param $themeColour: key value (colour)
+@mixin theme($name, $themeColour) {
+
+	&.read-more[data-theme="#{$name}"] {
+		background: $themeColour;
+		box-shadow:0px 3px 0px 0px rgba(darken($themeColour,10%), 1);
+
+		.button {
+			background: darken($themeColour, 10%);
+
+			&:hover {
+				background: darken($themeColour, 20%);
+			}
+		}
+	}
+
+}

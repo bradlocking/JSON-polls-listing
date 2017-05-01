@@ -1,0 +1,62 @@
+.notification {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    text-align: center;
+    padding: 14px;
+    background-color: $primaryColor;
+    color: #ffffff; 
+    @include translate(0, -101%);
+    @include anim(transform .2s ease);
+    @include anim(opacity .2s ease);
+    @include anim(background-color .2s ease);
+    @include breakpoint('xs') {
+        padding: 15px;
+    }
+    &,
+    * {
+        @include anim(transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease);
+    }
+    &:after {
+        content: 'Got it';
+        font-weight: 100;
+        font-size: 16px;
+        line-height: 1;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        opacity: 0;
+        @include anim(all .2s ease-in-out);
+        @include transform(translateY(200%) translateX(-50%));
+        @include breakpoint('xs') {
+            font-size: 16px;
+        }
+    }
+    p {
+        font-weight: 100;
+        font-size: 16px;
+        color: #ffffff;
+        @include anim(all .2s ease);
+        @include breakpoint('xs') {
+            font-size: 14px;
+        }
+    }
+    &.show {
+        @include translate(0, 0);
+        @include anim(all .2s ease-in-out);
+        &:hover {
+            p {
+                @include translate(0, -100%);
+                opacity: 0;
+            }
+            &:after {
+                @include transform(translateY(50%) translateX(-50%));
+                opacity: 1;
+            }
+        }
+    }
+}

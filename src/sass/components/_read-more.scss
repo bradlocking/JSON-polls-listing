@@ -1,0 +1,42 @@
+.read-more {
+	padding:80px;
+	border-radius:20px;
+	background:$primaryColor; 
+	box-shadow:0px 3px 0px 0px rgba(darken($primaryColor,10%), 1);
+				
+	@include breakpoint('sm-xs') {
+		padding:60px; 
+	}
+				
+	@include breakpoint('xs') {
+		padding:40px;
+	}
+
+	h3, p {
+		color:white;
+	}
+	
+	p {
+		margin-top:20px;
+				
+		@include breakpoint('xs') {
+			margin-top:15px;
+		}
+	}
+	
+	.button {
+		margin-top:25px;
+				
+		@include breakpoint('xs') {
+			margin-top:20px;
+		}
+	}
+
+	+ .read-more {
+		margin-top: 50px;
+
+		@include breakpoint('xs') {
+			margin-top:30px;
+		}
+	}
+}

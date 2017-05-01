@@ -1,0 +1,234 @@
+@mixin backgroundWidgetHeading() {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background: $primaryColor;
+    color: white;
+    padding: 15px 60px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin: 0 !important;
+    text-align: center;
+    width: 100%;
+    max-width: 540px;
+    @include translate(-50%, -50%);
+
+    @include breakpoint('xs') {
+      padding: 12px 20px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      max-width: 360px;
+    }
+
+    @include breakpoint($max: 600px) {
+        position: relative;
+        margin: 0 auto 30px auto !important;
+        width: auto;
+        transform: none;
+        left: 0;
+        padding: 13px 15px;
+    }
+}
+
+@mixin textSelectOff() {
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
+}
+
+// generic transform
+@mixin transform($transforms...) {
+       -moz-transform: $transforms;
+         -o-transform: $transforms;
+        -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+            transform: $transforms;
+}
+
+// translate
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+
+//transform origin
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin; 
+         -o-transform-origin: $origin;
+        -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+          transform-origin: $origin;
+}
+//transition delay origin
+@mixin transition-delay ($delay) {
+    -moz-transition-delay: $delay;
+         -o-transition-delay: $delay;
+        -ms-transition-delay: $delay;
+    -webkit-transition-delay: $delay;
+          transition-delay: $delay;
+}
+
+// CSS Transition mixin
+@mixin anim($transition...) {
+       -moz-transition: $transition;
+         -o-transition: $transition;
+        -ms-transition: $transition;
+    -webkit-transition: $transition;
+          transition: $transition;
+}
+
+
+
+
+// Flexbox Mixins
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-wrap($value: nowrap) {
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+@mixin flex($value) {
+    -webkit-flex: $value;
+    -moz-flex: $value;
+    -ms-flex: $value;
+    flex: $value;
+}
+
+@mixin justify($value) {
+  -webkit-box-pack: $value;
+  -webkit-justify-content: $value;
+  -moz-box-pack: $value;
+  -ms-flex-pack: $value;
+  justify-content: $value;
+}
+
+@mixin spaceBetween {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+@mixin align($value) {
+  -webkit-box-align: $value;
+  -moz-box-align: $value;
+  -ms-flex-align: $value;
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+@mixin flexOrder($value) {
+    order: $value;
+    -webkit-order: $value;
+    -ms-flex-order: $value;
+}
+
+@mixin alignContent($value) {
+    -webkit-align-content: $value;
+    -moz-align-content: $value;
+    -ms-align-content: $value;
+    align-content: $value;
+}
+
+
+@mixin alignSelf($align: auto) {
+    -webkit-align-self: $align;
+    -moz-align-self: $align;
+    -ms-align-self: $align;
+    align-self: $align;
+}
+
+@mixin alignItems($value) {
+    -webkit-align-items: $value;
+    -moz-align-items: $value;
+    -ms-align-items: $value;
+    align-items: $value;
+}
+
+
+
+
+
+
+
+// Responsive Breakpoints
+
+@mixin breakpoint($min: 0, $max: 0) {
+  $type: type-of($min);
+
+  @if $type == string {
+    @if $min == xs {
+        @media (max-width: 767px) { @content; }                           // Mobile Devices
+    }
+
+    @else if $min == xs-lrg {
+        @media (min-width: 481px) and (max-width: 767px) { @content; }    // Mobile Large
+    }
+
+    @else if $min == xs-sml {
+        @media (max-width: 480px) { @content; }                           // Mobile Small
+    }
+
+    @else if $min == sm-xs {
+        @media (max-width: 991px) { @content; }                           // Mobile & Tablet Devices
+    }
+
+    @else if $min == sm {
+        @media (min-width: 768px) and (max-width: 991px) { @content; }    // Tablet Devices
+    }
+
+    @else if $min == md-xs {
+        @media (max-width: 1199px) { @content; }                          // Mobile, Tablet & Desktops
+    }
+
+    @else if $min == md-sm {
+        @media (min-width: 768px) and (max-width: 1199px) { @content; }   // Tablet Devices & Desktops
+    }
+
+    @else if $min == md {
+        @media (min-width: 992px) and (max-width: 1199px) { @content; }   // Desktops
+    }
+
+    @else if $min == lg {
+        @media (min-width: 1200px) { @content; }                          // Widescreen Desktops
+    }
+
+    // Otherwise pass a warning to the compiler as to the appropriate options
+    @else {
+      @warn "The breakpoint mixin supports the following attributes: xs, xs-sml, xs-lrg, sm-xs, sm, md, lg";
+    }
+  }
+  @else if $type == number {
+    // Allow for custom parameters for min and max size
+    $query: "all" !default;
+    @if      $min != 0 and $max != 0 { $query: "(min-width: #{$min}) and (max-width: #{$max})"; } // set both min and max
+    @else if $min != 0 and $max == 0 { $query: "(min-width: #{$min})"; } // set just min
+    @else if $min == 0 and $max != 0 { $query: "(max-width: #{$max})"; } // set just max
+    @media #{$query} { @content; }
+  }
+}
+
+// clearfix
+@mixin clearfix() {
+    &:before, &:after{ display: table; content: " "; }
+    &:after{ clear:both; }
+}
