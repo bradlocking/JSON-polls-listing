@@ -10,7 +10,6 @@ var noAnimTimeout,
 doc.ready(function(){
 	closeNotification();
 	dialogs();
-	historyStates();
 
 	win.trigger('resize');
 });

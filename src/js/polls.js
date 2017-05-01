@@ -55,7 +55,7 @@ var fingerPrint = {
 			if (!snapshot.hasChild(pollID)) {
 				fingerPrint.updateAnswer(pollID, selectedAnswer);
 			} else {
-				doNotification('You have already submitted to this poll and your answer is not counted');
+				doNotification('You have already submitted to this poll and your answer will not be counted');
 
 				// Turn the answers from the DB into a string to store on the users browser.
 				var userAnswers = JSON.stringify(snapshot.toJSON());
