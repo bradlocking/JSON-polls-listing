@@ -18,6 +18,13 @@
     margin-top: 100px;
 }
 
+.no-anim,
+.no-anim * {
+    @include anim(none !important);
+}
+.no-anim-single {
+    @include anim(none !important);
+}
 
 *:before, *:after {
     -webkit-box-sizing: border-box;

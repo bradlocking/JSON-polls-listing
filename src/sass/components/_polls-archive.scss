@@ -2,7 +2,7 @@
 	position: relative;
 	padding: 100px 0;
 	margin-top: 160px;
-	background: $colorGrey;
+	background: rgba($primaryColor, 0.08);
 
 	@include breakpoint('xs') {
 		padding: 50px 0;
@@ -15,10 +15,10 @@
 
 	&__listing {
 	   	@include breakpoint($min: 680px) {
-	   		@include flexbox;
-	   		@include flex-wrap(wrap);
 	   		width: calc(100% + 30px);
 	   		margin-bottom: -30px;
+	   		@include flexbox;
+	   		@include flex-wrap(wrap);
 	   	}
 
 	   	@include breakpoint($max: 600px) {
@@ -36,15 +36,12 @@
 	   	}
 
 		> a {
-			@include flexbox;
-			@include justify(space-between);
-			@inlude align-items(center);
-			@include anim(all .4s ease);
-		    text-align: center;
-		    background: #ffffff;
 		    margin-bottom: 30px;
 		    padding: 40px 40px 0 40px;
 		   	overflow: hidden;
+		    text-align: center;
+		   	word-break: break-word;
+		    background: #ffffff;
 		   	box-orient: vertical;
 		   	box-direction: normal;
 		   	-webkit-flex-direction: column;
@@ -56,7 +53,10 @@
 		   	box-pack: justify;
 		   	-ms-flex-pack: justify;
 		   	align-items: center;
-		   	word-break: break-word;
+			@include flexbox;
+			@include justify(space-between);
+			@inlude align-items(center);
+			@include anim(all .4s ease);
 
 	   	   	@include breakpoint($min: 680px) {
 	   		    margin-right: 30px;
@@ -108,20 +108,20 @@
 		    	@include align(flex-end);
 
 		    	li {
-		    		@include flexbox;
-		    		@include align(flex-end);
+	    		    position: relative;
+	    		    min-width: 50px;
+	    		    height: 100%;
+	    		    cursor: pointer;
+	    		    font-size: .88889rem;
+	    		    color: #44326b; 
+	    		    background: rgba($primaryColor, 0.08);
 		    		-ms-flex-align: end;
 	    		    -webkit-box-align: end;
 	    		    -moz-box-align: end;
 	    		    box-align: end;
+		    		@include flexbox;
+		    		@include align(flex-end);
 	    		    @include justify(center);
-	    		    min-width: 50px;
-	    		    height: 100%;
-	    		    font-size: .88889rem;
-	    		    color: #44326b;
-	    		    cursor: pointer;
-	    		    position: relative;
-	    		    background: #dee8ed;
 
 	    		    span {
 	    		    	@include anim(all .2s ease);

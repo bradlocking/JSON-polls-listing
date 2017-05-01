@@ -36,12 +36,12 @@
             }
 
             .text-button[data-action="close-dialog"] {
-                font-size: 30px;
-                padding: 17px 32px;
+                font-size: 35px;
+                padding: 15px 30px;
                 float: right;
 
                 @include breakpoint('xs') {
-                    font-size: 20px;
+                    font-size: 28px;
                 }
             }
         }
@@ -69,8 +69,9 @@
                 }
             }
 
-            .button--large {
+            .button {
                 margin-top: 40px;
+                @include textSelectOff();
 
                 span {
                     position: relative;
@@ -87,9 +88,6 @@
                             font-size: 9px !important; 
                         }
                     }
-                }
-
-                &.poll-newer {
                 }
 
                 &.poll-older {

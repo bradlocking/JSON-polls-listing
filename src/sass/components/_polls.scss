@@ -133,7 +133,7 @@
 	input {
 		&:checked {
 			+ span > label {
-				color: #366d32;
+				color: $primaryColor;
 
 				&:after {
 					@include transform(scale(1));
